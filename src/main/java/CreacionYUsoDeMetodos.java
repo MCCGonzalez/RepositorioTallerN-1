@@ -10,18 +10,16 @@ public class CreacionYUsoDeMetodos {
 
     public static void ColeccionDeLibros(){
 
-        int contador = 0;
 
         Bienvenida();
 
         int numeroDeLibros = cuantosLibrosDeseaAgreagar();
         char libros[][] = CrearColeccionDeLibros(numeroDeLibros);
-        String autor = AgregarAutor();
-        String titulo = AgregarTitulo();
-        String editorial = AgregarEditorial();
+        MensajeLibros();
+        String[][] datosLibros = AgregarDatos(numeroDeLibros);
         char libro[] = BuscarLibro(libros);
         MostrarLibro();
-        MostrarEspaciosUsados();
+        MostrarEspaciosUsados(numeroDeLibros);
         MostrarEspaciosDisponibles();
         MostrarTodaLaColeccion();
 
@@ -47,33 +45,33 @@ public class CreacionYUsoDeMetodos {
 
     }
 
-    private static String  AgregarAutor(){
+    private static void MensajeLibros(){
 
-        Scanner teclado = new Scanner(System.in);
-        String autor = teclado.nextLine();
-
-        return autor;
+        System.out.println("ingrese en el siguiente orden: ");
+        System.out.println("Autor");
+        System.out.println("titulo");
+        System.out.println("editorial");
     }
 
-    private static String AgregarTitulo(){
+    private static String[][]  AgregarDatos(int numeroDeLibros){
 
         Scanner teclado = new Scanner(System.in);
-        String titulo = teclado.nextLine();
+        String datosLibros[][] = new String[numeroDeLibros][3];
+        for( int i = 0; i < numeroDeLibros; i++ ) {
 
-        return titulo;
+            for (int j = 0; j < 3; j++) {
+
+                datosLibros[i][j] = teclado.nextLine();
+
+            }
+        }
+        return datosLibros;
     }
 
-    private static String AgregarEditorial(){
-
-        Scanner teclado = new Scanner(System.in);
-        String editorial = teclado.nextLine();
-
-        return editorial;
-    }
 
     private static char[] BuscarLibro(char[][] libros){
 
-         return new char[1];
+         return new char[3];
     }
 
     private static void MostrarLibro(){
@@ -81,7 +79,9 @@ public class CreacionYUsoDeMetodos {
 
     }
 
-    private static void MostrarEspaciosUsados(){
+    private static void MostrarEspaciosUsados(int numeroDeLibros){
+
+        System.out.println("espacios usados: " + numeroDeLibros);
 
 
     }
